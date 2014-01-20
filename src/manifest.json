@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "LinkTips",
   "author": "Nate Book <nmbook@gmail.com>",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Show URLs in all link title tooltips and allow custom title tooltip appearance.",
   "icons": {
     "16": "linktips16.png",

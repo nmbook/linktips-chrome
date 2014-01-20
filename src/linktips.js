@@ -50,12 +50,12 @@
         var currTipTimeout = null;
         var moved = false;
         var selector = 'a';
-        if (settings.useCustom && settings.allTips) {
-            selector = 'a, [title]';
-        } else if (!settings.showURL) {
-            selector = 'a[title]';
-        }
-        if (!settings.styleContainer) {
+        // use default values if the user never set any settings
+        if (!settings.saved) {
+            settings.showURL = true;
+            settings.useCustom = false;
+            settings.allTips = false;
+            settings.moveWithMouse = false;
             settings.styleContainer = 'display: block;\
 padding: 1em 1em 1em 1em;\
 color: #000;\
@@ -69,17 +69,16 @@ box-shadow: 3px 3px 15px #888;\
 -webkit-user-select: none;\
 user-select: none;\
 cursor: default;';
-        }
-        if (!settings.styleLink) {
             settings.styleLink = 'color: #888;\
 text-indent: -1em;\
 margin-left: 1em;';
-        }
-        if (!settings.styleLinkDomain) {
             settings.styleLinkDomain = 'color: #000;';
-        }
-        if (!settings.styleLinkSchemeSecure) {
             settings.styleLinkSchemeSecure = 'color: #080;';
+        }
+        if (settings.useCustom && settings.allTips) {
+            selector = 'a, [title]';
+        } else if (!settings.showURL) {
+            selector = 'a[title]';
         }
         style = '<style>'+
         '.__lt__container {'+settings.styleContainer.replace(/;/g, ' !important;')+'}'+

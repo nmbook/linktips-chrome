@@ -12,7 +12,7 @@
             localStorage[key] = $(this).val();
             break;
         }
-        console.log('set ' + key + ' = ' + localStorage[key].split('\n')[0]);
+        //console.log('set ' + key + ' = ' + localStorage[key].split('\n')[0]);
         updateUseCustom();
     });
     $('textarea').on('keyup', function () {
@@ -22,7 +22,14 @@
         }
     });
     $(document).ready(function() {
+        // fill fields with values from localStorage if localStorage has them
+        //     if not, set localStorage to values currently on page (the default values)
+        // then set localStorage[saved] so that settings (in linktips.js) knows to use localStorage values
+        //     instead of overwriting settings with the default values
         // checkboxes
+        $('a#test_link').click(function (e) {
+            e.preventDefault();
+        });
         ['showURL', 'useCustom', 'allTips', 'moveWithMouse'].map(function (el) {
             if (localStorage[el]) {
                 if (localStorage[el] == 'true') {
@@ -30,14 +37,19 @@
                 } else {
                     $('#' + el).removeAttr('checked');
                 }
+            } else {
+                localStorage[el] = $('#' + el).is(':checked');
             }
         });
         // text fields
         ['styleContainer', 'styleLink', 'styleLinkDomain', 'styleLinkSchemeSecure'].map(function (el) {
             if (localStorage[el]) {
                 $('#' + el).val(localStorage[el]);
+            } else {
+                localStorage[el] = $('#' + el).val();
             }
         });
+        localStorage['saved'] = true;
         updateUseCustom();
     });
     function updateUseCustom() {
