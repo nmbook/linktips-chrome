@@ -1,0 +1,61 @@
+body {
+    font-family: serif;
+    margin: 0;
+    padding: 0;
+}
+
+div.cen {
+    width: 860px;
+    margin: 0 auto;
+}
+
+a.acn {
+    text-align: center;
+    text-decoration: none;
+    color: blue;
+    font-weight: bold;
+    margin: 0;
+}
+
+a.acn:hover {
+    text-decoration: underline;
+}
+
+.lin {
+    display: block;
+    margin: 12px;
+}
+
+.box {
+    border: 1px solid grey;
+    padding: 12px;
+}
+
+h1 {
+    margin: 0;
+    padding: 12px;
+    font-size: 1.4em;
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.1em;
+}
+
+small {
+    display: block;
+    text-align: right;
+    color: grey;
+    font-style: italic;
+    font-size: 0.6em;
+}
+
+textarea {
+    font-family: monospace;
+    border: 1px solid lightgrey;
+}
+
+label {
+    cursor: pointer;
+}

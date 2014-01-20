@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>LinkTips Options</title>
+    <link rel="stylesheet" type="text/css" href="linktips.css" />
+    <link rel="stylesheet" type="text/css" href="options.css" />
+  </head>
+  <body><div class="cen">
+    <h1>LinkTips Options</h1>
+    <a class="acn lin box" href="https://www.google.com/search?q=this+is+a+long+search+text&oq=this+is+a+long+search+text&aqs=chrome..69i57.6158j0j7&sourceid=chrome&espv=210&es_sm=93&ie=UTF-8" title="Example Title Text Example Title Text Example Title Text Example Title Text Example Title Text Example Title Text">Example link to a Google search (hover mouse to test tip)</a>
+    <div class="lin">
+        <input id="showURL" type="checkbox" checked="true"></input>
+        <label for="showURL">Show URL in link tip text (default: on)</label>
+    </div>
+    <div class="lin">
+        <input id="useCustom" type="checkbox"></input>
+        <label for="useCustom">Use custom tooltip style (default: off)</label>
+    </div>
+    <div id="customFields" class="box">
+        <h2>Custom tip style</h2>
+        <div class="lin">
+            <input id="allTips" type="checkbox"></input>
+            <label for="allTips">Use this style for <b>all tooltips</b> on the web (default: off)</label>
+        </div>
+        <div class="lin">
+            <input id="moveWithMouse" type="checkbox"></input>
+            <label for="moveWithMouse">Move tip with mouse while still over a link (default: off)</label>
+        </div>
+        <div class="lin">
+            <label for="styleContainer">Container CSS</label>
+            <textarea class="lin" id="styleContainer" rows="7" cols="42">display: block;
+padding: 1em 1em 1em 1em;
+color: #000;
+background: #ffc;
+border: 1px solid #ffc;
+border-radius: 3px;
+max-width: 600px;
+word-wrap: break-word;
+box-shadow: 3px 3px 15px #888;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+user-select: none;
+cursor: default;
+</textarea>
+        </div>
+        <div class="lin">
+            <label for="styleLink">Link CSS</label>
+            <textarea class="lin" id="styleLink" rows="3" cols="42">color: #888;
+text-indent: -1em;
+margin-left: 1em;
+</textarea>
+        </div>
+        <div class="lin">
+            <label for="styleLinkDomain">Domain CSS</label>
+            <textarea class="lin" id="styleLinkDomain" rows="3" cols="42">color: #000;
+</textarea>
+        </div>
+        <div class="lin">
+            <label for="styleLinkSchemeSecure">Secure Scheme CSS</label>
+            <textarea class="lin" id="styleLinkSchemeSecure" rows="3" cols="42">color: #080;
+</textarea>
+        </div>
+    </div>
+    <small>&copy; 2014 Nate Book</small>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="linktips.js"></script>
+    <script type="text/javascript" src="options.js"></script>
+  </div></body>
+</html>

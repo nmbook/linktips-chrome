@@ -1,0 +1,18 @@
+.__lt__container, .__lt__container span {
+    background: transparent;
+    color: #000;
+    font-family: sans-serif;
+    font-size: 1em;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    vertical-align: top;
+}
+
+.__lt__container {
+    position: absolute;
+    z-index: 1000000;
+}

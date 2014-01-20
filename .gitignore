@@ -1,0 +1,10 @@
+# editor and temp files
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+*~
+
+# private key not committed
+*.pem
