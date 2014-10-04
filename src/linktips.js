@@ -8,7 +8,7 @@
     function makeLinkTitle(url, oldTitle, withHTML) {
         var isTitle = oldTitle && oldTitle.length > 0;
         // if "use current scheme", then prepend current scheme
-        if (url.substr(2) == '//') {
+        if (url.substr(2) === '//') {
             url = window.location.protocol + url;
         }
         // if no scheme+authority, then prepend current values
@@ -50,6 +50,8 @@
         var currTipTimeout = null;
         var moved = false;
         var selector = 'a';
+        var styled = {};
+
         // use default values if the user never set any settings
         if (!settings.saved) {
             settings.showURL = true;
@@ -86,27 +88,32 @@ margin-left: 1em;';
         '.__lt__domain {'+settings.styleLinkDomain.replace(/;/g, ' !important;')+'}'+
         '.__lt__scheme_sec {'+settings.styleLinkSchemeSecure.replace(';', ' !important;')+'}'+
         '</style>';
+
         $(document).on('mouseover', selector, function () {
             clearTimeout(currTipTimeout);
             var link = this;
-            var isLT = $(link).attr('__lt__is_handled');
-            if (isLT != 'true') {
-                $(link).attr('__lt__is_handled', 'true');
-                var title = $(link).attr('title');
+            if (!('id' in link)) {
+                $(link).attr('id', 'lt__genid__' + (nid++));
+            }
+            var id = link.id;
+            // value of title attribute, currently
+            var title = $(link).attr('title');
+            // check: if not known (we did not makeLink() it)
+            // check: if title is not empty and not what's stored, then the website changed it, redo it
+            if (!(id in styled) || (title !== '' && title !== styled[id])) {
                 var href = $(link).attr('href');
-                if (settings.showURL && href != null) {
+                if (settings.showURL && href !== null) {
                     title = makeLinkTitle(href, title, settings.useCustom);
                 }
                 if (settings.useCustom) {
                     $(link).removeAttr('title');
-                    $(link).attr('__lt__title', title);
                 } else {
                     $(link).attr('title', title);
                 }
+                styled[id] = title;
             }
             if (settings.useCustom) {
-                var title = $(this).attr('__lt__title');
-                if (title) {
+                if (title.length) {
                     if (currTip != null) {
                         currTip.html(style+title);
                         //currTip.show();
