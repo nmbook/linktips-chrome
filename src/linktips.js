@@ -8,7 +8,7 @@
     function makeLinkTitle(url, oldTitle, withHTML) {
         var isTitle = oldTitle && oldTitle.length > 0;
         // if "use current scheme", then prepend current scheme
-        if (url.substr(2) === '//') {
+        if (url.substr(0, 2) === '//') {
             url = window.location.protocol + url;
         }
         // if no scheme+authority, then prepend current values
