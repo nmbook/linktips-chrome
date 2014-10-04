@@ -49,7 +49,7 @@
         //console.log(settings);
         var currTipTimeout = null;
         var moved = false;
-        var selector = 'a';
+        var selector;
         var styled = {};
 
         // use default values if the user never set any settings
@@ -78,9 +78,15 @@ margin-left: 1em;';
             settings.styleLinkSchemeSecure = 'color: #080;';
         }
         if (settings.useCustom && settings.allTips) {
-            selector = 'a, [title]';
+            // select all external links and elements with titles
+            // to apply custom styles to
+            selector = 'a:not([href^="#"]), [title]';
         } else if (!settings.showURL) {
-            selector = 'a[title]';
+            // select all external links with titles
+            selector = 'a:not([href^="#"])[title]';
+        } else {
+            // select all external links
+            selector = 'a:not([href^="#"])';
         }
         style = '<style>'+
         '.__lt__container {'+settings.styleContainer.replace(/;/g, ' !important;')+'}'+
